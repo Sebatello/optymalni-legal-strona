@@ -273,7 +273,7 @@ header.site-header{
   transition:filter .3s ease, opacity .3s ease;
 }
 .client-logo-item:hover img{filter:grayscale(0);opacity:1;}
-.client-logo-item.logo-boost{height:200px;width:350px;}
+.client-logo-item.logo-boost{height:170px;width:280px;}
 
 /* ===== GOOGLE REVIEWS (carousel) ===== */
 .testimonials-section{padding:80px 0 100px;background:var(--off-white);overflow:hidden;width:100%;}
