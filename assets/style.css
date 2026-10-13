@@ -128,7 +128,9 @@ header.site-header{
 .hero{position:relative;min-height:92vh;display:flex;align-items:center;justify-content:center;overflow:hidden;color:#fff;text-align:center;}
 .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;animation:heroZoom 20s ease-in-out infinite alternate;z-index:0;}
 @keyframes heroZoom{0%{transform:scale(1);}100%{transform:scale(1.12);}}
-.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(51,51,53,.5) 0%, rgba(81,81,83,.7) 60%, rgba(30,30,31,.88) 100%);z-index:1;}
+.hero::before {
+  background: rgba(0, 0, 0, 0.35) !important;
+}
 .hero-content{position:relative;z-index:2;max-width:880px;padding:0 24px;width:100%;}
 .hero h1{color:#fff;font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.25;margin:0 0 20px;text-shadow:0 4px 18px rgba(0,0,0,.35);}
 .hero h1 .accent{color:var(--gold-light);}
@@ -273,7 +275,7 @@ header.site-header{
   transition:filter .3s ease, opacity .3s ease;
 }
 .client-logo-item:hover img{filter:grayscale(0);opacity:1;}
-.client-logo-item.logo-boost{height:170px;width:280px;}
+.client-logo-item.logo-boost{height:100px;width:220px;}
 
 /* ===== GOOGLE REVIEWS (carousel) ===== */
 .testimonials-section{padding:80px 0 100px;background:var(--off-white);overflow:hidden;width:100%;}
@@ -541,28 +543,46 @@ footer.site-footer{background:var(--dark);color:var(--light-gray);padding:70px 0
   .testi-card{width:260px;}
 }
 
-/* Sticky menu v19-style – JS-controlled fallback for layouts where CSS sticky is blocked */
-.site-header {
-  position: relative;
-  width: 100%;
-  z-index: 1000;
+/* v24: jednolita biała góra, proporcjonalne sylwetki */
+html,body {overflow-x:clip;}
+.top-info-bar {position:relative !important;background:#fff !important;background-image:none !important;padding:4px 0 !important;border-bottom:1px solid #e8e8e8;min-height:0;font-size:12px;line-height:1.5;color:#515153 !important;box-shadow:none !important;}
+.top-info-bar .container,.top-info-bar a,.top-info-bar li {background:transparent !important;color:#515153 !important;text-shadow:none !important;}
+.top-info-bar::before,.top-info-bar::after {content:none !important;}
+.top-info-bar i {color:#bb9753;}
+header.site-header {position:sticky !important;top:0 !important;z-index:2000;background:#fff !important;backdrop-filter:none;}
+.hero-bg {animation:none !important;background-image:url("https://optymalni.legal/wp-content/uploads/2026/10/panorama-torun-2-scaled.png") !important;}
+.hero-bg::before,.hero-bg::after {content:none !important;background:none !important;}
+.hero-overlay {background:rgba(0,0,0,.35) !important;}
+.about-mission-grid {grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);max-width:1240px;gap:36px;align-items:center;}
+.about-mission-photo {position:relative;width:100%;aspect-ratio:auto;overflow:hidden;border-radius:0;box-shadow:none;background:#fff;}
+.about-mission-photo img {display:block;position:static;width:100%;max-width:100%;height:auto;object-fit:contain;transform:none;filter:none;mask-image:none;-webkit-mask-image:none;}
+.about-mission-photo::after {content:'';position:absolute;inset:0;opacity:1;border-radius:0;box-shadow:none;background:linear-gradient(to top,#fff 0%,transparent 12%),linear-gradient(to left,#fff 0%,transparent 5%);pointer-events:none;}
+@media(max-width:1024px){.about-mission-grid{grid-template-columns:1fr;}.about-mission-photo{max-width:650px;margin:0 auto;}}
+
+
+/* Wymuszona jednolita czarna nakładka na hero */
+.hero {
+  position: relative !important;
+  isolation: isolate;
 }
 
-.site-header.is-stuck {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  width: 100% !important;
-  z-index: 9999 !important;
+.hero::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  background: rgba(0, 0, 0, 0.35) !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
 }
 
-.sticky-menu-placeholder {
-  display: none;
-  width: 100%;
-  height: 0;
+.hero-bg {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
 }
 
-.sticky-menu-placeholder.active {
-  display: block;
+.hero-content {
+  position: relative !important;
+  z-index: 2 !important;
 }
