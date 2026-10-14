@@ -270,11 +270,11 @@ header.site-header{
 }
 .client-logo-item img{
   width:100%;height:100%;object-fit:contain;
-  filter:grayscale(1);
-  opacity:.5;
+  filter:none;
+  opacity:1;
   transition:filter .3s ease, opacity .3s ease;
 }
-.client-logo-item:hover img{filter:grayscale(0);opacity:1;}
+.client-logo-item:hover img{filter:none;opacity:1;}
 .client-logo-item.logo-boost{height:100px;width:220px;}
 
 /* ===== GOOGLE REVIEWS (carousel) ===== */
@@ -550,7 +550,7 @@ html,body {overflow-x:clip;}
 .top-info-bar::before,.top-info-bar::after {content:none !important;}
 .top-info-bar i {color:#bb9753;}
 header.site-header {position:sticky !important;top:0 !important;z-index:2000;background:#fff !important;backdrop-filter:none;}
-.hero-bg {animation:none !important;background-image:url("https://optymalni.legal/wp-content/uploads/2026/10/panorama-torun-2-scaled.png") !important;}
+.hero-bg {animation:none !important;background-image:url("https://optymalni.legal/wp-content/uploads/2026/10/Gemini_Generated_Image_wtbg56wtbg56wtbg.jpg") !important;}
 .hero-bg::before,.hero-bg::after {content:none !important;background:none !important;}
 .hero-overlay {background:rgba(0,0,0,.35) !important;}
 .about-mission-grid {grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);max-width:1240px;gap:36px;align-items:center;}
@@ -588,38 +588,47 @@ header.site-header {position:sticky !important;top:0 !important;z-index:2000;bac
 }
 
 
-/* Ostatnie poprawki: większe sylwetki i czytelne logotypy */
-.about-section { padding-bottom: 24px; }
+/* Nowe zdjęcia, sylwetki oparte na dolnej krawędzi sekcji, pełna widoczność logo */
+.about-section { padding-bottom: 0; }
 .about-mission-grid {
   grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
   gap: 40px;
   align-items: end;
 }
-.about-mission-photo { width: 100%; max-width: none; }
+.about-mission-photo {
+  align-self: end;
+  width: 100%; max-width: none;
+  margin: 0; padding: 0;
+  line-height: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+  aspect-ratio: auto;
+}
 .about-mission-photo img {
-  display: block;
-  position: static;
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  transform: none;
-  object-fit: contain;
+  display: block; position: static;
+  width: 100%; max-width: 100%; height: auto;
+  margin: 0; transform: none;
+  object-fit: contain; object-position: center bottom;
+  filter: none; mask-image: none; -webkit-mask-image: none;
 }
-.about-mission-content { min-width: 0; padding-bottom: 24px; }
+.about-mission-photo::after { content: none; display: none; }
+.about-mission-content { min-width: 0; padding-bottom: 48px; }
+.client-logo-item,
+.client-logo-item:hover { filter: none !important; opacity: 1 !important; }
 .client-logo-item img,
-.client-logo-item:hover img { filter: none; opacity: 1; }
-.client-logo-item.logo-boost { width: 270px; height: 120px; }
-.client-logo-item img[alt="Księgowy Duet"],
-.client-logo-item:hover img[alt="Księgowy Duet"] {
-  filter: brightness(.85) contrast(1.1);
-  opacity: 1;
+.client-logo-item:hover img {
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
 }
+.client-logo-item.logo-boost { width: 270px; height: 120px; }
 @media (max-width: 1024px) {
-  .about-mission-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-  .about-mission-photo { max-width: 720px; margin: 0 auto; }
-  .about-mission-content { padding-bottom: 0; }
+  .about-mission-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .about-mission-content { grid-row: 1; padding-bottom: 0; }
+  .about-mission-photo { grid-row: 2; max-width: 720px; margin: 0 auto; }
 }
 @media (max-width: 600px) {
-  .about-section { padding-bottom: 24px; }
   .client-logo-item.logo-boost { width: 195px; height: 90px; }
 }
