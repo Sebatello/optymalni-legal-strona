@@ -586,3 +586,40 @@ header.site-header {position:sticky !important;top:0 !important;z-index:2000;bac
   position: relative !important;
   z-index: 2 !important;
 }
+
+
+/* Ostatnie poprawki: większe sylwetki i czytelne logotypy */
+.about-section { padding-bottom: 24px; }
+.about-mission-grid {
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: end;
+}
+.about-mission-photo { width: 100%; max-width: none; }
+.about-mission-photo img {
+  display: block;
+  position: static;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  transform: none;
+  object-fit: contain;
+}
+.about-mission-content { min-width: 0; padding-bottom: 24px; }
+.client-logo-item img,
+.client-logo-item:hover img { filter: none; opacity: 1; }
+.client-logo-item.logo-boost { width: 270px; height: 120px; }
+.client-logo-item img[alt="Księgowy Duet"],
+.client-logo-item:hover img[alt="Księgowy Duet"] {
+  filter: brightness(.85) contrast(1.1);
+  opacity: 1;
+}
+@media (max-width: 1024px) {
+  .about-mission-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .about-mission-photo { max-width: 720px; margin: 0 auto; }
+  .about-mission-content { padding-bottom: 0; }
+}
+@media (max-width: 600px) {
+  .about-section { padding-bottom: 24px; }
+  .client-logo-item.logo-boost { width: 195px; height: 90px; }
+}
